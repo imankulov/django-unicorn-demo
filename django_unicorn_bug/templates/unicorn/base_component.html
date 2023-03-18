@@ -1,0 +1,20 @@
+{% load unicorn %}
+
+<h1>Nested Django Unicorn loop bug ?</h1>
+
+<h3>Only in the same base Django Unicorn component :</h3>
+
+<ul>
+    {% for text in array %}
+        <li>{{ text }}</li>
+    {% endfor %}
+</ul>
+
+
+<h3>Nested Django Unicorn components :</h3>
+
+<ul>
+    {% for text in array %}
+        {% unicorn 'nested_component' text=text %}
+    {% endfor %}
+</ul>
