@@ -2,19 +2,27 @@
 
 <h1>Nested Django Unicorn loop bug ?</h1>
 
-<h3>Only in the same base Django Unicorn component :</h3>
+<h3>Only in the same base Django Unicorn component:</h3>
 
 <ul>
     {% for text in array %}
-        <li>{{ text }}</li>
+    <li>{{ text }}</li>
     {% endfor %}
 </ul>
 
 
-<h3>Nested Django Unicorn components with parameter in loop :</h3>
+<h3>Nested Django Unicorn components with parameter in loop with key based on variable:</h3>
 
 <ul>
     {% for text in array %}
-        {% unicorn 'nested_component' text=text %}
+    {% unicorn 'nested_component' text=text key=text %}
+    {% endfor %}
+</ul>
+
+<h3>Nested Django Unicorn components with parameter in loop with key based on for loop counter:</h3>
+
+<ul>
+    {% for text in array %}
+    {% unicorn 'nested_component' text=text key=forloop.counter %}
     {% endfor %}
 </ul>
