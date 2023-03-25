@@ -35,14 +35,17 @@
 {% if display %}
     <p>Displayed</p>
     <button unicorn:click="test_action">Test action</button>
-    <h2>Nested components in if :</h2>
+    <h2>Components in if :</h2>
 
+    <button unicorn:click="test_action">
+        (Base) Test action
+    </button>
     {% unicorn 'nested_component' key="abc" %}
 {#    {% for i in display %}#}
 {#        {% unicorn 'nested_component' key=i %}#}
 {#    {% endfor %}#}
 {% endif %}
-<h2>Nested components :</h2>
+<h2>Components in for :</h2>
 {% for i in array %}
         {% unicorn 'nested_component' key=i %}
 {% endfor %}
