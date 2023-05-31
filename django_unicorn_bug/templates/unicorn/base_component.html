@@ -1,53 +1,53 @@
 {% load unicorn %}
 <div class="test">
-{#<h1>Nested Django Unicorn loop bug ?</h1>#}
-{##}
-{#<h3>Only in the same base Django Unicorn component:</h3>#}
-{##}
-{#<ul>#}
-{#    {% for text in array %}#}
-{#    <li>{{ text }}</li>#}
-{#    {% endfor %}#}
-{#</ul>#}
-{##}
-{##}
-{#<h3>Nested Django Unicorn components with parameter in loop with key based on variable:</h3>#}
-{##}
-{#<ul>#}
-{#    {% for text in array %}#}
-{#    {% unicorn 'nested_component' text=text key=text %}#}
-{#    {% endfor %}#}
-{#</ul>#}
-{##}
-{#<h3>Nested Django Unicorn components with parameter in loop with key based on for loop counter:</h3>#}
-{##}
-{#<ul>#}
-{#    {% for text in array %}#}
-{#    {% unicorn 'nested_component' text=text key=forloop.counter %}#}
-{#    {% endfor %}#}
-{#</ul>#}
+    {#<h1>Nested Django Unicorn loop bug ?</h1>#}
+    {##}
+    {#<h3>Only in the same base Django Unicorn component:</h3>#}
+    {##}
+    {#<ul>#}
+    {#    {% for text in array %}#}
+    {#    <li>{{ text }}</li>#}
+    {#    {% endfor %}#}
+    {#</ul>#}
+    {##}
+    {##}
+    {#<h3>Nested Django Unicorn components with parameter in loop with key based on variable:</h3>#}
+    {##}
+    {#<ul>#}
+    {#    {% for text in array %}#}
+    {#    {% unicorn 'nested_component' text=text key=text %}#}
+    {#    {% endfor %}#}
+    {#</ul>#}
+    {##}
+    {#<h3>Nested Django Unicorn components with parameter in loop with key based on for loop counter:</h3>#}
+    {##}
+    {#<ul>#}
+    {#    {% for text in array %}#}
+    {#    {% unicorn 'nested_component' text=text key=forloop.counter %}#}
+    {#    {% endfor %}#}
+    {#</ul>#}
 
-<h1>Django Unicorn nested unicorn:click bug ?</h1>
+    <h1>Django Unicorn nested unicorn:click bug ?</h1>
 
-<h2>Base component :</h2>
-<button unicorn:click="add_array">Display</button>
+    <h2>Base component :</h2>
+    <button unicorn:click="add_array">Display</button>
 
-{% if display %}
-    <h2>Displayed :</h2>
-    <button unicorn:click="test_action">Test action</button>
-    <h3>Components in if :</h3>
+    {% if display %}
+        <h2>Displayed :</h2>
+        <button unicorn:click="test_action">Test action</button>
+        <h3>Components in if :</h3>
 
-    <button unicorn:click="test_action">
-        (Base) Test action
-    </button>
-    <p>Doesn't work :</p>
-    {% unicorn 'nested_component' key="abc" %}
-{#    {% for i in display %}#}
-{#        {% unicorn 'nested_component' key=i %}#}
-{#    {% endfor %}#}
-{% endif %}
-<h3>Nested components in for (doesn't work) :</h3>
-{% for i in display %}
-        {% unicorn 'nested_component' key=i %}
-{% endfor %}
+        <button unicorn:click="test_action">
+            (Base) Test action
+        </button>
+        <p>Doesn't work :</p>
+        {% unicorn 'nested_component' key=0 i=0 parent=view %}
+        {#    {% for i in display %}#}
+        {#        {% unicorn 'nested_component' key=i %}#}
+        {#    {% endfor %}#}
+    {% endif %}
+    <h3>Nested components in for (doesn't work) :</h3>
+    {% for i in display %}
+        {% unicorn 'nested_component' key=i i=i parent=view %}
+    {% endfor %}
 </div>
