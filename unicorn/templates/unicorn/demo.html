@@ -1,0 +1,16 @@
+<div
+    id="wrapper"
+    x-data="{
+    counter: 0,
+    increment() { this.counter++ }
+ }"
+>
+  <div id="counter">
+    Counter: <span x-text="counter"></span>
+    <button @click="increment()">Increment</button>
+  </div>
+  <div id="name">
+    <input unicorn:model="name" type="text" id="text"/>
+    Hello {{ name|title }}
+  </div>
+</div>

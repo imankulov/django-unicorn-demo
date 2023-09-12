@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "django_unicorn",
-    'django_unicorn_bug'
+    "unicorn",
 ]
 
 MIDDLEWARE = [
@@ -117,3 +117,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+UNICORN = {
+    "MORPHER": "alpine",
+}
